@@ -31,4 +31,12 @@ describe('Inner Insight home page', () => {
     expect(markup).toContain('Googleアカウントへのログインが必要です');
     expect(markup).not.toMatch(/治療|必ず改善|資格保有|満足度/);
   });
+
+  it('uses the new editorial imagery to tell the session story', () => {
+    const markup = renderToStaticMarkup(<Home />);
+
+    expect(markup).toContain('/images/window-light-v2.png');
+    expect(markup).toContain('/images/wildflower-hand-v2.png');
+    expect(markup).toContain('/images/forest-path-v2.png');
+  });
 });

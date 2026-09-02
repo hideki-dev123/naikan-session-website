@@ -3,6 +3,21 @@ import { ArrowDown, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { ApplicationEmbed } from '@/components/application-embed';
 import { philosophies, profile, sessionSteps, siteLinks } from '@/lib/content';
 
+const philosophyImages = [
+  {
+    src: '/images/window-light-v2.png',
+    alt: '生成りのカーテンに植物の影が落ちる静かな窓辺',
+  },
+  {
+    src: '/images/wildflower-hand-v2.png',
+    alt: '小さな白い花をそっと手に取る様子',
+  },
+  {
+    src: '/images/forest-path-v2.png',
+    alt: '朝の光が差し込む森の小径',
+  },
+];
+
 function SectionHeading({ index, label, title }: { index: string; label: string; title: React.ReactNode }) {
   return (
     <div className="section-heading" data-reveal>
@@ -63,6 +78,9 @@ export function HomeHero() {
             fetchPriority="high"
           />
         </div>
+        <p className="hero__script" aria-hidden="true">
+          Inner Insight
+        </p>
         <figcaption>Listen closely to what lives within.</figcaption>
       </figure>
       <a className="hero__scroll" href="#about" aria-label="内観とはのセクションへ">
@@ -77,6 +95,19 @@ export function HomeAbout() {
   return (
     <section className="about section" id="about" aria-labelledby="about-title">
       <div className="section-frame about__grid">
+        <figure className="about__visual" data-reveal>
+          <img
+            src="/images/window-light-v2.png"
+            alt="生成りのカーテンに植物の影が落ちる、やわらかな朝の窓辺"
+            width="1102"
+            height="1378"
+            loading="lazy"
+          />
+          <figcaption>
+            <span>01</span>
+            A quiet place to meet yourself.
+          </figcaption>
+        </figure>
         <SectionHeading
           index="01"
           label="ABOUT INTROSPECTION"
@@ -89,9 +120,7 @@ export function HomeAbout() {
           }
         />
         <div className="about__body" data-reveal>
-          <p className="about__intro">
-            内観とは、自分と向き合い、心の動きを観察すること。
-          </p>
+          <p className="about__intro">内観とは、自分と向き合い、心の動きを観察すること。</p>
           <p>
             何を感じ、何を考え、何が嫌で、何が嬉しいのか。すぐに答えを出そうとせず、まずは自分の心の話を聞いてあげます。
           </p>
@@ -125,10 +154,18 @@ export function HomePhilosophy() {
           }
         />
         <div className="philosophy__grid">
-          {philosophies.map((item) => (
+          {philosophies.map((item, index) => (
             <article className="philosophy-card" key={item.number} data-reveal>
               <span>{item.number}</span>
-              <div className="philosophy-card__orb" aria-hidden="true" />
+              <div className="philosophy-card__image">
+                <img
+                  src={philosophyImages[index].src}
+                  alt={philosophyImages[index].alt}
+                  width="1254"
+                  height="1254"
+                  loading="lazy"
+                />
+              </div>
               <h3>{item.title}</h3>
               <p>{item.body}</p>
             </article>
@@ -152,6 +189,7 @@ export function HomeSession() {
     <section className="session section" id="session" aria-labelledby="session-title">
       <div className="section-frame session__grid">
         <div className="session__mark" aria-hidden="true" data-reveal>
+          <img src="/images/forest-path-v2.png" alt="" width="1254" height="1254" loading="lazy" />
           <span>I</span>
           <p>WITHIN / DIALOGUE / AWARENESS</p>
         </div>
@@ -164,9 +202,7 @@ export function HomeSession() {
             <p>
               最初は約2時間。堅い面談ではなく、雑談も交えながら人生や今の心について対話します。そこで見えてきた状態に合わせ、これからの進め方を一緒に考えます。
             </p>
-            <p className="session__aside">
-              相性が合わないと感じたときは、いつでもやめていただけます。
-            </p>
+            <p className="session__aside">相性が合わないと感じたときは、いつでもやめていただけます。</p>
           </div>
         </div>
       </div>
@@ -202,6 +238,13 @@ export function HomeProfile() {
       <div className="section-frame profile__grid">
         <div className="profile__visual" data-reveal>
           <div className="profile__portrait-placeholder" aria-label="Inner Insight モノグラム">
+            <img
+              src="/images/wildflower-hand-v2.png"
+              alt="小さな白い花をそっと手に取る様子"
+              width="1254"
+              height="1254"
+              loading="lazy"
+            />
             <span>I</span>
           </div>
           <p>{profile.reading}</p>
@@ -236,7 +279,13 @@ export function HomeJournal() {
       <div className="section-frame">
         <SectionHeading index="06" label="JOURNAL" title="言葉から、考えに触れる。" />
         <div className="journal__grid">
-          <a className="journal-card journal-card--note" href={siteLinks.note} target="_blank" rel="noreferrer" data-reveal>
+          <a
+            className="journal-card journal-card--note"
+            href={siteLinks.note}
+            target="_blank"
+            rel="noreferrer"
+            data-reveal
+          >
             <span>note</span>
             <p>自分の心の変化や、日常で感じたこと</p>
             <h3>「自分はどう生きたいか」を、言葉にする。</h3>

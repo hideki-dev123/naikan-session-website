@@ -7,11 +7,9 @@ describe('site metadata', () => {
     expect(metadata.title).toBe('Inner Insight｜平田光の内観セッション');
     expect(metadata.description).toContain('自分はどう生きたいか');
     expect(metadata.openGraph).toMatchObject({ locale: 'ja_JP', type: 'website' });
-    expect(metadata.metadataBase?.toString()).toBe(
-      'https://inner-insight-hirata-hikaru.emiruka.chatgpt.site/',
-    );
+    expect(metadata.metadataBase?.toString()).toBe('https://inner-insight-hirata-hikaru.emiruka.chatgpt.site/');
     expect(metadata.openGraph).toMatchObject({
-      images: [{ url: '/images/inner-insight-mark.png' }],
+      images: [{ url: '/og-v2.png' }],
     });
   });
 });
