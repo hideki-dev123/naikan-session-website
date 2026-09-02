@@ -23,4 +23,12 @@ describe('Inner Insight home page', () => {
     expect(markup).toContain('https://x.com/Hikaruhirata242');
     expect(markup).toContain('https://www.instagram.com/hikaruhirata_24/');
   });
+
+  it('keeps one primary heading and avoids unsupported claims', () => {
+    const markup = renderToStaticMarkup(<Home />);
+
+    expect(markup.match(/<h1(?:\s|>)/g)).toHaveLength(1);
+    expect(markup).toContain('Googleアカウントへのログインが必要です');
+    expect(markup).not.toMatch(/治療|必ず改善|資格保有|満足度/);
+  });
 });
