@@ -727,6 +727,11 @@ main,
   background:
     radial-gradient(circle at 86% 12%, rgba(180, 109, 133, 0.24), transparent 34%),
     linear-gradient(145deg, rgba(252, 247, 242, 0.8), rgba(239, 224, 221, 0.68));
+  color: #281b22;
+}
+
+.journal-card--x > p {
+  color: #281b22;
 }
 
 .journal-card > span {
