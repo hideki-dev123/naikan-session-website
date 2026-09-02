@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 
+import { ExperienceClient } from '@/components/experience-client';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 
@@ -12,6 +13,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <a className="skip-link" href="#main-content">
           本文へ移動
         </a>
+        <ExperienceClient />
         <SiteHeader />
         {children}
         <SiteFooter />
