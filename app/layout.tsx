@@ -8,6 +8,7 @@ import { SiteHeader } from '@/components/site-header';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://inner-insight-hirata-hikaru.emiruka.chatgpt.site'),
   title: 'Inner Insight｜平田光の内観セッション',
   description:
     '自分の心の動きに気づき、自分はどう生きたいかを見つめるための内観セッション。',
@@ -19,11 +20,20 @@ export const metadata: Metadata = {
     description: '自分の声を、置き去りにしない。',
     locale: 'ja_JP',
     type: 'website',
+    images: [
+      {
+        url: '/images/inner-insight-mark.png',
+        width: 1587,
+        height: 2245,
+        alt: 'Inner Insightのシンボルマーク',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Inner Insight｜内観セッション',
     description: '自分の声を、置き去りにしない。',
+    images: ['/images/inner-insight-mark.png'],
   },
 };
 
