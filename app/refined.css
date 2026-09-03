@@ -236,9 +236,17 @@ main,
   margin-top: 26px;
   color: #554d50;
   font-family: var(--serif);
-  font-size: 14px;
+  font-size: 15px;
   line-height: 2.15;
   letter-spacing: 0.08em;
+}
+
+.hero__lead p {
+  margin: 0;
+}
+
+.hero__lead p + p {
+  margin-top: 0.45rem;
 }
 
 .hero__actions {
@@ -385,8 +393,16 @@ main,
   margin-top: 5px;
   color: #5f5759;
   font-family: var(--serif);
-  font-size: 13px;
+  font-size: 15px;
   line-height: 2.2;
+}
+
+.about__body p {
+  margin: 0;
+}
+
+.about__body p + p {
+  margin-top: 1.25rem;
 }
 
 .about__intro {
@@ -491,6 +507,11 @@ main,
   padding: 50px 0 0;
 }
 
+.philosophy__note-copy {
+  display: grid;
+  gap: 0.5rem;
+}
+
 /* Session */
 .session {
   margin: 20px 0;
@@ -565,11 +586,20 @@ main,
 .session__body {
   color: rgba(255, 255, 255, 0.68);
   font-family: var(--serif);
-  font-size: 13px;
+  font-size: 15px;
   line-height: 2.15;
 }
 
+.session__body > p {
+  margin: 0;
+}
+
+.session__body > p + p {
+  margin-top: 1.25rem;
+}
+
 .session__aside {
+  margin-top: 2rem !important;
   color: #e4c3c9;
 }
 
@@ -704,6 +734,19 @@ main,
   font-family: var(--serif);
 }
 
+.profile__body {
+  font-size: 15px;
+  line-height: 2.15;
+}
+
+.profile__body p {
+  margin: 0;
+}
+
+.profile__body p + p {
+  margin-top: 1.25rem;
+}
+
 /* Journal */
 .journal {
   padding-top: 110px;
@@ -767,6 +810,16 @@ main,
 .application__lead {
   margin-inline: auto;
   font-family: var(--serif);
+  font-size: 16px;
+  line-height: 2;
+}
+
+.application__lead p {
+  margin: 0;
+}
+
+.application__lead p + p {
+  margin-top: 0.45rem;
 }
 
 .application-embed {
@@ -782,6 +835,24 @@ main,
   top: 30px;
   padding: 30px;
   background: radial-gradient(circle at 100% 0, rgba(199, 169, 138, 0.24), transparent 38%), var(--paper-bright);
+}
+
+.application-embed__note p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 2;
+}
+
+.application-embed__note p:first-of-type {
+  margin-top: 1.6rem;
+}
+
+.application-embed__note p + p {
+  margin-top: 0.7rem;
+}
+
+.application-embed__note .button {
+  margin-top: 2rem;
 }
 
 .application-embed__frame-wrap {

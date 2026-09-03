@@ -52,11 +52,10 @@ export function HomeHero() {
           <br />
           <em>置き去りにしない。</em>
         </h1>
-        <p className="hero__lead" data-reveal>
-          感情や思考の奥に、そっと耳を澄ます。
-          <br />
-          本当のあなたと話すための、内観セッション。
-        </p>
+        <div className="hero__lead" data-reveal>
+          <p>感情や思考の奥に、そっと耳を澄ます。</p>
+          <p>本当のあなたと話すための、内観セッション。</p>
+        </div>
         <div className="hero__actions" data-reveal>
           <a className="button button--primary" href={siteLinks.form} target="_blank" rel="noreferrer">
             セッションを予約する
@@ -172,11 +171,10 @@ export function HomePhilosophy() {
           ))}
         </div>
         <div className="philosophy__note" data-reveal>
-          <p>
-            幸せは、いつも大きな形をしているわけではありません。
-            <br />
-            誰かといることや、今日を生きている肌感も、大切な心の手がかりです。
-          </p>
+          <div className="philosophy__note-copy">
+            <p>幸せは、いつも大きな形をしているわけではありません。</p>
+            <p>誰かといることや、今日を生きている肌感も、大切な心の手がかりです。</p>
+          </div>
           <ExternalTextLink href={siteLinks.note}>noteで考えを読む</ExternalTextLink>
         </div>
       </div>
@@ -199,9 +197,8 @@ export function HomeSession() {
             <p>
               このセッションは、あなたの代わりに人生を変えるものではありません。内観はきっかけであり、変化を選ぶのはあなた自身です。
             </p>
-            <p>
-              最初は約2時間。堅い面談ではなく、雑談も交えながら人生や今の心について対話します。そこで見えてきた状態に合わせ、これからの進め方を一緒に考えます。
-            </p>
+            <p>最初は約2時間。堅い面談ではなく、雑談も交えながら人生や今の心について対話します。</p>
+            <p>そこで見えてきた状態に合わせ、これからの進め方を一緒に考えます。</p>
             <p className="session__aside">相性が合わないと感じたときは、いつでもやめていただけます。</p>
           </div>
         </div>
@@ -259,9 +256,8 @@ export function HomeProfile() {
             <p>
               自分自身が心と向き合い、「自分はどう生きたいか」を問い続けてきた経験から、誰かが自分のままで生きるための内観をお手伝いしています。
             </p>
-            <p>
-              人のために生きようとする優しさを大切にしながらも、まずはあなた自身が折れないこと。自分の声を聞き、その望みを選べることを大切にしています。
-            </p>
+            <p>人のために生きようとする優しさを大切にしながらも、まずはあなた自身が折れないこと。</p>
+            <p>自分の声を聞き、その望みを選べることを大切にしています。</p>
           </div>
           <div className="profile__links" data-reveal>
             <ExternalTextLink href={siteLinks.x}>Xを見る</ExternalTextLink>
@@ -322,11 +318,10 @@ export function HomeApplication() {
             </>
           }
         />
-        <p className="application__lead" data-reveal>
-          まずは、今のあなたについて聞かせてください。
-          <br />
-          お会いできることを、心から楽しみにしています。
-        </p>
+        <div className="application__lead" data-reveal>
+          <p>まずは、今のあなたについて聞かせてください。</p>
+          <p>お会いできることを、心から楽しみにしています。</p>
+        </div>
         <ApplicationEmbed formUrl={siteLinks.form} />
       </div>
     </section>

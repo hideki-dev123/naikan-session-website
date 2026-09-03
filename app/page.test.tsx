@@ -1,4 +1,5 @@
 import { renderToStaticMarkup } from 'react-dom/server';
+import { JSDOM } from 'jsdom';
 import { describe, expect, it } from 'vitest';
 
 import Home from './page';
@@ -38,5 +39,15 @@ describe('Inner Insight home page', () => {
     expect(markup).toContain('/images/window-light-v2.png');
     expect(markup).toContain('/images/wildflower-hand-v2.png');
     expect(markup).toContain('/images/forest-path-v2.png');
+  });
+
+  it('groups multi-sentence supporting copy into readable paragraphs', () => {
+    const document = new JSDOM(renderToStaticMarkup(<Home />)).window.document;
+
+    expect(document.querySelectorAll('.hero__lead p')).toHaveLength(2);
+    expect(document.querySelectorAll('.session__body > p:not(.session__aside)')).toHaveLength(3);
+    expect(document.querySelectorAll('.profile__body > p')).toHaveLength(3);
+    expect(document.querySelectorAll('.application__lead p')).toHaveLength(2);
+    expect(document.querySelectorAll('.application-embed__note p')).toHaveLength(2);
   });
 });
