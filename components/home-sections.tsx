@@ -199,6 +199,7 @@ export function HomeSession() {
             </p>
             <p>最初は約2時間。堅い面談ではなく、雑談も交えながら人生や今の心について対話します。</p>
             <p>そこで見えてきた状態に合わせ、これからの進め方を一緒に考えます。</p>
+            <p className="session__promise">魔法は起きません。ただ、少しずつ確実に変わっていきます。</p>
             <p className="session__aside">相性が合わないと感じたときは、いつでもやめていただけます。</p>
           </div>
         </div>

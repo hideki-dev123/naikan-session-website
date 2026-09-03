@@ -45,9 +45,17 @@ describe('Inner Insight home page', () => {
     const document = new JSDOM(renderToStaticMarkup(<Home />)).window.document;
 
     expect(document.querySelectorAll('.hero__lead p')).toHaveLength(2);
-    expect(document.querySelectorAll('.session__body > p:not(.session__aside)')).toHaveLength(3);
+    expect(document.querySelectorAll('.session__body > p:not(.session__aside):not(.session__promise)')).toHaveLength(3);
     expect(document.querySelectorAll('.profile__body > p')).toHaveLength(3);
     expect(document.querySelectorAll('.application__lead p')).toHaveLength(2);
     expect(document.querySelectorAll('.application-embed__note p')).toHaveLength(2);
+  });
+
+  it('presents the session transformation message as a distinct statement', () => {
+    const document = new JSDOM(renderToStaticMarkup(<Home />)).window.document;
+
+    expect(document.querySelector('.session__promise')?.textContent).toBe(
+      '魔法は起きません。ただ、少しずつ確実に変わっていきます。',
+    );
   });
 });

@@ -603,6 +603,13 @@ main,
   color: #e4c3c9;
 }
 
+.session__promise {
+  margin-top: 2.25rem !important;
+  color: #f1ddd6;
+  font-size: 17px;
+  letter-spacing: 0.1em;
+}
+
 /* Flow */
 .flow {
   padding-bottom: 120px;
