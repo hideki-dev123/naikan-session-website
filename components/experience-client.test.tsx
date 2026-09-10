@@ -42,6 +42,9 @@ describe('ExperienceClient', () => {
   });
 
   it('scrubs the Hero film to the current scroll progress while keeping it paused', () => {
+    vi.stubGlobal('requestAnimationFrame', vi.fn(() => 1));
+    vi.stubGlobal('cancelAnimationFrame', vi.fn());
+
     const hero = document.createElement('section');
     hero.dataset.hero = '';
     hero.getBoundingClientRect = vi.fn(
