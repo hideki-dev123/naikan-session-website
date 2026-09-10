@@ -41,22 +41,22 @@ function ExternalTextLink({ href, children }: { href: string; children: React.Re
 
 export function HomeHero() {
   return (
-    <section className="hero" id="top" aria-labelledby="hero-title">
+    <section className="hero" id="top" aria-labelledby="hero-title" data-hero>
       <div className="hero__paper" aria-hidden="true" />
       <div className="hero__content">
-        <p className="hero__eyebrow" data-reveal>
+        <p className="hero__eyebrow" data-hero-reveal="eyebrow">
           INNER INSIGHT · INTROSPECTION SESSION
         </p>
-        <h1 id="hero-title" data-reveal>
+        <h1 id="hero-title" data-hero-reveal="copy">
           自分の声を、
           <br />
           <em>置き去りにしない。</em>
         </h1>
-        <div className="hero__lead" data-reveal>
+        <div className="hero__lead" data-hero-reveal="lead">
           <p>感情や思考の奥に、そっと耳を澄ます。</p>
           <p>本当のあなたと話すための、内観セッション。</p>
         </div>
-        <div className="hero__actions" data-reveal>
+        <div className="hero__actions" data-hero-reveal="actions">
           <a className="button button--primary" href={siteLinks.form} target="_blank" rel="noreferrer">
             セッションを予約する
             <ArrowUpRight aria-hidden="true" />
@@ -67,14 +67,26 @@ export function HomeHero() {
           </a>
         </div>
       </div>
-      <figure className="hero__visual" data-reveal>
+      <figure className="hero__visual" data-hero-reveal="visual" data-hero-visual>
         <div className="hero__image-shell">
           <img
+            className="hero__video-fallback"
             src="/images/inner-insight-mark.png"
             alt="生成りの和紙に、葡萄色から深い紺へと移ろうIのモノグラム"
             width="1587"
             height="2245"
-            fetchPriority="high"
+            aria-hidden="true"
+          />
+          <video
+            className="hero__video"
+            src="/movie/Hero Movie.mp4"
+            poster="/images/inner-insight-mark.png"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label="Inner Insight video"
           />
         </div>
         <p className="hero__script" aria-hidden="true">
