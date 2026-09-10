@@ -69,23 +69,15 @@ export function HomeHero() {
       </div>
       <figure className="hero__visual" data-hero-reveal="visual" data-hero-visual>
         <div className="hero__image-shell">
-          <img
-            className="hero__video-fallback"
-            src="/images/inner-insight-mark.png"
-            alt="生成りの和紙に、葡萄色から深い紺へと移ろうIのモノグラム"
-            width="1587"
-            height="2245"
-            aria-hidden="true"
-          />
           <video
             className="hero__video"
+            data-hero-video
             src="/movie/Hero Movie.mp4"
             poster="/images/inner-insight-mark.png"
-            autoPlay
             muted
-            loop
             playsInline
-            preload="metadata"
+            preload="auto"
+            style={{ display: 'block' }}
             aria-label="Inner Insight video"
           />
         </div>
