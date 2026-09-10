@@ -41,18 +41,18 @@ describe('Inner Insight home page', () => {
     expect(markup).toContain('/images/forest-path-v2.png');
   });
 
-  it('presents the Hero film with a still-image fallback', () => {
+  it('presents the Hero film as one scroll-driven visual instead of autoplaying over a fallback image', () => {
     const document = new JSDOM(renderToStaticMarkup(<Home />)).window.document;
     const video = document.querySelector<HTMLVideoElement>('.hero__video');
-    const fallback = document.querySelector<HTMLImageElement>('.hero__video-fallback');
 
     expect(video?.getAttribute('src')).toBe('/movie/Hero Movie.mp4');
     expect(video?.getAttribute('poster')).toBe('/images/inner-insight-mark.png');
-    expect(video?.autoplay).toBe(true);
-    expect(video?.hasAttribute('muted')).toBe(true);
-    expect(video?.loop).toBe(true);
+    expect(video?.hasAttribute('autoplay')).toBe(false);
+    expect(video?.hasAttribute('loop')).toBe(false);
     expect(video?.playsInline).toBe(true);
-    expect(fallback?.getAttribute('src')).toBe('/images/inner-insight-mark.png');
+    expect(video?.getAttribute('preload')).toBe('auto');
+    expect(video?.hasAttribute('data-hero-video')).toBe(true);
+    expect(document.querySelector('.hero__video-fallback')).toBeNull();
   });
 
   it('groups multi-sentence supporting copy into readable paragraphs', () => {
