@@ -40,4 +40,37 @@ describe('ExperienceClient', () => {
     unmount();
     expect(disconnect).toHaveBeenCalledOnce();
   });
+
+  it('scrubs the Hero film to the current scroll progress while keeping it paused', () => {
+    const hero = document.createElement('section');
+    hero.dataset.hero = '';
+    hero.getBoundingClientRect = vi.fn(
+      () =>
+        ({
+          top: -440,
+          bottom: 440,
+          left: 0,
+          right: 100,
+          width: 100,
+          height: 880,
+          x: 0,
+          y: -440,
+          toJSON: () => ({}),
+        }) as DOMRect,
+    );
+
+    const video = document.createElement('video');
+    video.dataset.heroVideo = '';
+    Object.defineProperty(video, 'duration', { configurable: true, value: 10 });
+    const pause = vi.spyOn(video, 'pause').mockImplementation(() => undefined);
+    hero.append(video);
+    document.body.append(hero);
+
+    const { unmount } = render(<ExperienceClient />);
+
+    expect(pause).toHaveBeenCalled();
+    expect(video.currentTime).toBeCloseTo(4.975, 2);
+
+    unmount();
+  });
 });
