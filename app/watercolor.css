@@ -11,12 +11,23 @@
 }
 
 body {
-  background: #faf9f6;
+  isolation: isolate;
+  background: transparent;
+}
+body::before {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  content: '';
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(255, 254, 252, 0.62), rgba(255, 254, 252, 0.62)),
+    url('/images/watercolor-paper.webp') center / cover no-repeat;
 }
 
 .site-header {
-  background: rgba(252, 250, 247, 0.91);
-  border-bottom: 1px solid rgba(129, 92, 88, 0.12);
+  background: rgba(252, 250, 248, 0.96);
+  border-bottom: 1px solid rgba(129, 92, 88, 0.08);
 }
 .brand__mark {
   color: #44243d;
@@ -77,18 +88,7 @@ body {
   min-height: 760px;
 }
 .hero::before {
-  position: absolute;
-  z-index: -1;
-  top: -92px;
-  bottom: -1px;
-  left: 50%;
-  width: 100vw;
-  content: '';
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.32)),
-    url('/images/watercolor-paper.webp') center center / cover no-repeat;
-  transform: translateX(-50%);
-  pointer-events: none;
+  content: none;
 }
 .hero h1 {
   font-size: clamp(39px, 4vw, 58px);
@@ -106,13 +106,13 @@ body {
 }
 .hero__visual img {
   border: 0;
-  box-shadow: 0 22px 62px rgba(97, 64, 68, 0.09);
+  box-shadow: 0 26px 75px rgba(86, 64, 76, 0.08);
 }
 .hero__visual figcaption {
   color: #665b60;
 }
 .hero__bottom {
-  border-color: rgba(120, 86, 88, 0.22);
+  border-color: rgba(120, 86, 88, 0.13);
 }
 .hero__bottom a {
   color: #553343;
@@ -127,21 +127,15 @@ body {
   isolation: isolate;
 }
 .story {
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.77), rgba(255, 255, 255, 0.76)),
-    url('/images/watercolor-paper.webp') left center / cover no-repeat;
+  background: radial-gradient(ellipse 42% 35% at 12% 50%, rgba(229, 207, 199, 0.15), transparent);
 }
 .session {
-  border-block: 1px solid rgba(192, 158, 150, 0.18);
-  background:
-    linear-gradient(120deg, rgba(252, 245, 241, 0.81), rgba(255, 255, 255, 0.87)),
-    url('/images/watercolor-paper.webp') right center / cover no-repeat;
+  border: 0;
+  background: radial-gradient(ellipse 42% 35% at 88% 50%, rgba(229, 212, 210, 0.19), transparent);
 }
 .belief {
   color: var(--ink);
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.78)),
-    url('/images/watercolor-paper.webp') center center / cover no-repeat;
+  background: radial-gradient(ellipse 46% 34% at 18% 50%, rgba(232, 213, 210, 0.16), transparent);
 }
 .belief .chapter-label {
   color: #84545c;
@@ -168,21 +162,22 @@ body {
   z-index: -1;
   inset: -23px;
   border-radius: 43% 57% 55% 45%;
-  background: rgba(220, 180, 172, 0.26);
+  background: rgba(227, 201, 198, 0.25);
   content: '';
   transform: rotate(-9deg);
 }
 .belief__image img {
   aspect-ratio: 1;
   border-radius: 50%;
+  box-shadow:
+    0 0 0 8px rgba(255, 255, 255, 0.42),
+    0 18px 45px rgba(99, 74, 79, 0.12);
 }
 .belief__signature span {
   color: var(--muted);
 }
 .flow {
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.82), rgba(252, 249, 246, 0.83)),
-    url('/images/watercolor-paper.webp') left bottom / cover no-repeat;
+  background: radial-gradient(ellipse 44% 36% at 80% 52%, rgba(230, 213, 211, 0.17), transparent);
 }
 .flow__list {
   gap: 30px;
@@ -193,9 +188,10 @@ body {
   align-items: center;
   min-width: 0;
   padding: 35px 28px;
-  border: 1px solid rgba(190, 158, 151, 0.22);
-  border-radius: 42% 48% 38% 42% / 22% 23% 18% 20%;
-  background: rgba(249, 243, 238, 0.64);
+  border: 1px solid rgba(195, 170, 166, 0.22);
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.46);
+  box-shadow: 0 18px 55px rgba(112, 85, 88, 0.055);
   text-align: center;
 }
 .flow__list li::before {
@@ -206,16 +202,19 @@ body {
   border-radius: 50%;
   background-position: center;
   background-size: cover;
+  box-shadow:
+    0 0 0 7px rgba(255, 255, 255, 0.55),
+    0 12px 30px rgba(100, 75, 80, 0.13);
   content: '';
 }
 .flow__list li:nth-child(1)::before {
-  background-image: url('/images/window-light-v2.png');
+  background-image: url('/images/flow-journal-v3.webp');
 }
 .flow__list li:nth-child(2)::before {
-  background-image: url('/images/wildflower-hand-v2.png');
+  background-image: url('/images/flow-blossom-v3.webp');
 }
 .flow__list li:nth-child(3)::before {
-  background-image: url('/images/forest-path-v2.png');
+  background-image: url('/images/flow-path-v3.webp');
 }
 .flow__list h3 {
   margin-top: 10px;
@@ -224,18 +223,22 @@ body {
   margin-top: 12px;
 }
 .application {
-  border-top: 1px solid rgba(192, 158, 150, 0.22);
-  background:
-    linear-gradient(rgba(250, 244, 240, 0.83), rgba(250, 244, 240, 0.88)),
-    url('/images/watercolor-paper.webp') right center / cover no-repeat;
+  border: 0;
+  background: radial-gradient(ellipse 45% 37% at 82% 52%, rgba(232, 210, 205, 0.17), transparent);
 }
 .application-embed {
   border-color: rgba(177, 142, 139, 0.28);
-  border-radius: 8px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.74);
   box-shadow: 0 24px 70px rgba(98, 68, 70, 0.08);
 }
 .site-footer {
-  background: linear-gradient(110deg, #241d39 0%, #53263f 46%, #8b575e 100%);
+  padding-top: 140px;
+  background: linear-gradient(180deg, rgba(66, 37, 59, 0) 0, rgba(66, 37, 59, 0.95) 110px, #39243b 100%);
+}
+.story__image img {
+  border-radius: 3px 3px 52px 3px;
+  box-shadow: 0 20px 50px rgba(100, 76, 79, 0.09);
 }
 .story .text-link,
 .belief .text-link {
@@ -306,14 +309,10 @@ body {
 }
 @media (max-width: 640px) {
   .site-header {
-    background: rgba(252, 250, 247, 0.95);
+    background: rgba(252, 250, 248, 0.94);
   }
   .hero {
     min-height: auto;
-  }
-  .hero::before {
-    top: -74px;
-    background-position: center;
   }
   .hero h1 {
     font-size: clamp(32px, 9vw, 49px);
@@ -382,5 +381,8 @@ body {
   }
   .mobile-apply {
     padding: 16px 22px;
+  }
+  .site-footer {
+    padding-top: 125px;
   }
 }
