@@ -1,24 +1,13 @@
-import {
-  HomeAbout,
-  HomeApplication,
-  HomeFlow,
-  HomeHero,
-  HomeJournal,
-  HomePhilosophy,
-  HomeProfile,
-  HomeSession,
-} from '@/components/home-sections';
+import { HomeApplication, HomeBelief, HomeFlow, HomeHero, HomeSession, HomeStory } from '@/components/home-sections';
 
 export default function Home() {
   return (
     <main id="main-content">
       <HomeHero />
-      <HomeAbout />
-      <HomePhilosophy />
+      <HomeStory />
       <HomeSession />
+      <HomeBelief />
       <HomeFlow />
-      <HomeProfile />
-      <HomeJournal />
       <HomeApplication />
     </main>
   );

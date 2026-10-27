@@ -11,13 +11,14 @@ import './refined.css';
 export const metadata: Metadata = {
   metadataBase: new URL('https://inner-insight-hirata-hikaru.emiruka.chatgpt.site'),
   title: 'Inner Insight｜平田光の内観セッション',
-  description: '自分の心の動きに気づき、自分はどう生きたいかを見つめるための内観セッション。',
+  description:
+    '自分の心の声に耳を傾けながら、自分自身への理解を深める内観セッション。平田光が一人ひとりの想いやペースを大切にしながら、一緒に向き合います。',
   icons: {
     icon: '/favicon.svg',
   },
   openGraph: {
     title: 'Inner Insight｜内観セッション',
-    description: '自分の声を、置き去りにしない。',
+    description: '誰もが自分の味方でいられる社会へ。',
     locale: 'ja_JP',
     type: 'website',
     images: [
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Inner Insight｜内観セッション',
-    description: '自分の声を、置き去りにしない。',
+    description: '誰もが自分の味方でいられる社会へ。',
     images: ['/og-v2.png'],
   },
 };
