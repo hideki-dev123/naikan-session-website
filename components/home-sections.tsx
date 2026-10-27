@@ -2,6 +2,7 @@ import { ArrowDown, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { ApplicationEmbed } from '@/components/application-embed';
 import { sessionSteps, siteLinks } from '@/lib/content';
 import { introduction } from '@/lib/introduction';
+import { splitFlowPhrases, splitIntoPhrases } from '@/lib/phrase-breaks';
 
 function ChapterLabel({ number, children }: { number: string; children: React.ReactNode }) {
   return (
@@ -14,8 +15,12 @@ function ChapterLabel({ number, children }: { number: string; children: React.Re
 
 function OriginalParagraphs({ start, end }: { start: number; end: number }) {
   return introduction.slice(start, end).map((paragraph, index) => (
-    <p data-original-copy key={start + index}>
-      {paragraph}
+    <p data-original-copy data-reveal="text" key={start + index}>
+      {splitIntoPhrases(paragraph, start + index).map((phrase, phraseIndex) => (
+        <span className="phrase" key={phraseIndex}>
+          {phrase}
+        </span>
+      ))}
     </p>
   ));
 }
@@ -93,6 +98,10 @@ export function HomeStory() {
         </div>
         <div className="letter" id="about">
           <OriginalParagraphs start={0} end={6} />
+          <a className="text-link" href="#application">
+            セッションのお申し込みへ
+            <ArrowRight aria-hidden="true" />
+          </a>
         </div>
       </div>
     </section>
@@ -163,6 +172,10 @@ export function HomeBelief() {
             <p className="belief__signature" aria-label="平田光">
               平田 光<span>HIKARU HIRATA</span>
             </p>
+            <a className="text-link" href="#application">
+              セッションのお申し込みへ
+              <ArrowRight aria-hidden="true" />
+            </a>
           </div>
         </div>
       </div>
@@ -182,11 +195,17 @@ export function HomeFlow() {
           <p>お申し込みは、下のGoogleフォームから。</p>
         </div>
         <ol className="flow__list">
-          {sessionSteps.map((step) => (
-            <li key={step.number}>
+          {sessionSteps.map((step, index) => (
+            <li key={step.number} data-reveal>
               <span className="flow__number">{step.number}</span>
               <h3>{step.title}</h3>
-              <p>{step.body}</p>
+              <p>
+                {splitFlowPhrases(step.body, index).map((phrase, phraseIndex) => (
+                  <span className="phrase" key={phraseIndex}>
+                    {phrase}
+                  </span>
+                ))}
+              </p>
             </li>
           ))}
         </ol>

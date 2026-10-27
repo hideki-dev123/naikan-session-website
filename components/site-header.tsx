@@ -17,6 +17,7 @@ function NavigationLinks({ mobile = false }: { mobile?: boolean }) {
 export function SiteHeader() {
   return (
     <header className="site-header">
+      <div className="reading-progress" aria-hidden="true" />
       <a className="brand" href="#top">
         <span className="brand__mark">I</span>
         <span className="brand__copy">

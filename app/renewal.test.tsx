@@ -60,4 +60,32 @@ describe('verbatim introduction and application journey', () => {
       expect(doc.getElementById(section.getAttribute('aria-labelledby')!)).not.toBeNull();
     }
   });
+
+  it('groups the original introduction into meaningful phrases while keeping its text intact', () => {
+    const doc = documentForPage();
+    const firstParagraph = doc.querySelector('#about [data-original-copy]')!;
+    const phrases = Array.from(firstParagraph.querySelectorAll('.phrase'), (node) => node.textContent);
+    expect(phrases).toEqual(['内観セッションを行っております、', '平田 光（ひらた ひかる）', 'と申します。']);
+    expect(phrases.join('')).toBe(firstParagraph.textContent);
+    const prose = Array.from(doc.querySelectorAll<HTMLElement>('.letter [data-original-copy]'));
+    expect(prose).toHaveLength(12);
+    for (const paragraph of prose) {
+      expect(paragraph.querySelectorAll('.phrase').length, paragraph.textContent ?? '').toBeGreaterThan(1);
+    }
+  });
+
+  it('offers the application path after the story and the belief without losing the final form', () => {
+    const doc = documentForPage();
+    expect(doc.querySelector('#profile a[href="#application"]')).not.toBeNull();
+    expect(doc.querySelector('#philosophy a[href="#application"]')).not.toBeNull();
+    expect(doc.querySelector('#application a[data-form-link]')?.getAttribute('href')).toBe(formUrl);
+  });
+
+  it('keeps the Google Form name together in the application steps', () => {
+    const doc = documentForPage();
+    const firstStep = doc.querySelector('.flow__list li p')!;
+    const phrases = Array.from(firstStep.querySelectorAll('.phrase'), (node) => node.textContent);
+    expect(phrases).toContain('Googleフォームから');
+    expect(phrases.join('')).toBe('ご希望や候補日をGoogleフォームからお知らせください。');
+  });
 });
