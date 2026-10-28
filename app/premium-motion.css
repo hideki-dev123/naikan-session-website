@@ -162,52 +162,69 @@
     width: 20px;
   }
 }
-/* The still image remains underneath as the accessible and low-motion fallback. */
-.hero-film {
-  position: relative;
+/* A single scroll-driven opening, followed by a clear, text-led hero. */
+.intro-film { position: relative; z-index: 31; height: 220vh; height: 220svh; pointer-events: none; }
+.intro-film + .site-header { margin-top: -100vh; margin-top: -100svh; }
+.intro-film[hidden] { display: none; }
+.intro-film[hidden] + .site-header { margin-top: 0; }
+.intro-film__stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
   overflow: hidden;
-  aspect-ratio: 1587 / 2245;
+  background: #f5f1ed;
+  pointer-events: auto;
 }
-
-.hero-film img {
+.intro-film__stage::before {
+  position: absolute;
+  inset: -30px;
+  content: '';
+  background: linear-gradient(rgba(251,248,245,.48), rgba(251,248,245,.48)), url('/images/inner-insight-mark.png') center / cover;
+  filter: blur(24px);
+}
+.intro-film video {
+  position: relative;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
-
-.hero-film__video {
+.intro-film__skip {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.8s ease;
-}
-
-.hero-film__video.is-ready { opacity: 1; }
-
-.hero-film__control {
-  position: absolute;
-  right: 12px;
-  bottom: 12px;
-  z-index: 1;
+  top: max(24px, env(safe-area-inset-top));
+  right: max(24px, env(safe-area-inset-right));
+  display: flex;
+  align-items: center;
+  gap: 14px;
   min-height: 44px;
-  padding: 0 14px;
-  border: 1px solid rgba(75, 49, 69, 0.3);
-  border-radius: 24px;
-  background: rgba(255, 251, 248, 0.86);
-  color: #493345;
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  cursor: pointer;
+  padding: 0 18px;
+  border: 1px solid rgba(74,35,66,.3);
+  border-radius: 999px;
+  background: rgba(255,252,249,.82);
+  color: #4a2342;
+  font-size: 11px;
+  letter-spacing: .08em;
 }
-
-.hero-film__control span { margin-right: 7px; }
-.hero-film__control:focus-visible { outline: 2px solid #493345; outline-offset: 3px; }
-
+.intro-film__skip:focus-visible { outline: 2px solid #4a2342; outline-offset: 4px; }
+.intro-film__prompt {
+  position: absolute;
+  bottom: max(28px, env(safe-area-inset-bottom));
+  left: 50%;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  transform: translateX(-50%);
+  color: #4a2342;
+  font-size: 9px;
+  letter-spacing: .2em;
+  white-space: nowrap;
+}
+.intro-film__prompt i { width: 1px; height: 30px; background: #8d6979; }
+.hero { grid-template-columns: 1fr; }
+.hero__content { max-width: 780px; }
 @media (prefers-reduced-motion: reduce) {
-  .hero-film__video, .hero-film__control { display: none; }
+  .intro-film { display: none; }
+  .intro-film + .site-header { margin-top: 0; }
 }
 
