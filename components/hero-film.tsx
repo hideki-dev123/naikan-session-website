@@ -24,8 +24,9 @@ export function HeroFilm() {
       const distance = Math.max(1, section.offsetHeight - window.innerHeight);
       const progress = Math.min(1, Math.max(0, -section.getBoundingClientRect().top / distance));
       stage.style.opacity = String(Math.min(1, (1 - progress) / 0.16));
-      if (Number.isFinite(video.duration) && video.duration > 0) {
-        video.currentTime = Math.min(video.duration - 0.01, progress * video.duration);
+      if (Number.isFinite(video.duration) && video.duration > 0 && !video.seeking) {
+        const target = Math.min(video.duration - 0.05, (progress / 0.84) * video.duration);
+        if (Math.abs(video.currentTime - target) > 0.025) video.currentTime = target;
       }
     };
     const schedule = () => {
@@ -36,7 +37,7 @@ export function HeroFilm() {
     const loadFilm = () => {
       if (motion.matches || loading) return;
       loading = true;
-      void fetch('/movie/Hero%20Movie.mp4', { signal: controller.signal })
+      void fetch('/movie/hero-scroll.mp4', { signal: controller.signal })
         .then((response) => {
           if (!response.ok) throw new Error('Film could not be loaded');
           return response.blob();
@@ -53,6 +54,7 @@ export function HeroFilm() {
     window.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', schedule);
     video.addEventListener('loadedmetadata', schedule);
+    video.addEventListener('seeked', schedule);
     motion.addEventListener('change', motionChanged);
     loadFilm();
     schedule();
@@ -60,6 +62,7 @@ export function HeroFilm() {
       window.removeEventListener('scroll', schedule);
       window.removeEventListener('resize', schedule);
       video.removeEventListener('loadedmetadata', schedule);
+      video.removeEventListener('seeked', schedule);
       motion.removeEventListener('change', motionChanged);
       controller.abort();
       if (objectUrl) URL.revokeObjectURL(objectUrl);
@@ -72,7 +75,7 @@ export function HeroFilm() {
       <div className="intro-film__stage" ref={stageRef}>
         <video
           ref={videoRef}
-          src="/movie/Hero Movie.mp4"
+          src="/movie/hero-scroll.mp4"
           poster="/images/inner-insight-mark.png"
           muted
           playsInline
@@ -87,4 +90,3 @@ export function HeroFilm() {
     </section>
   );
 }
-

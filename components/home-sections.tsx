@@ -49,6 +49,19 @@ export function HomeHero() {
           <span>HIKARU HIRATA</span>
         </div>
       </div>
+      <figure className="hero__visual">
+        <img
+          src="/images/inner-insight-mark.png"
+          alt="Inner Insightの象徴。和紙の上に、葡萄色から夜紺へと移ろうIの文字。"
+          width="1587"
+          height="2245"
+          fetchPriority="high"
+        />
+        <figcaption>
+          <span>INNER INSIGHT</span>
+          <span>内側にある、あなたへ。</span>
+        </figcaption>
+      </figure>
       <div className="hero__bottom">
         <span>INTROSPECTION SESSION / HIKARU HIRATA</span>
         <a href="#profile">
