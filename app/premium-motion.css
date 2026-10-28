@@ -221,8 +221,6 @@
   white-space: nowrap;
 }
 .intro-film__prompt i { width: 1px; height: 30px; background: #8d6979; }
-.hero { grid-template-columns: 1fr; }
-.hero__content { max-width: 780px; }
 @media (prefers-reduced-motion: reduce) {
   .intro-film { display: none; }
   .intro-film + .site-header { margin-top: 0; }

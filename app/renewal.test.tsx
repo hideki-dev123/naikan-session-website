@@ -34,12 +34,13 @@ describe('verbatim introduction and application journey', () => {
     expect(doc.querySelector('[data-original-copy] strong')?.textContent).toBe('誰もが自分の味方でいられる社会へ。');
   });
 
-  it('places the existing film before the hero without looping or duplicating it', () => {
+  it('shows the scroll-optimized film before the hero and restores the original I image', () => {
     const doc = documentForPage();
-    expect(doc.querySelector('.hero img, .hero video')).toBeNull();
+    expect(doc.querySelector('.hero img')?.getAttribute('src')).toBe('/images/inner-insight-mark.png');
+    expect(doc.querySelector('.hero video')).toBeNull();
     const video = doc.querySelector<HTMLVideoElement>('.intro-film video');
     expect(video).not.toBeNull();
-    expect(video?.getAttribute('src')).toBe('/movie/Hero Movie.mp4');
+    expect(video?.getAttribute('src')).toBe('/movie/hero-scroll.mp4');
     expect(video?.getAttribute('poster')).toBe('/images/inner-insight-mark.png');
     expect(video?.hasAttribute('loop')).toBe(false);
     expect(video?.hasAttribute('muted')).toBe(true);
