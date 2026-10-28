@@ -32,6 +32,11 @@ export function ExperienceClient() {
               applicationVisible = entry.isIntersecting;
             } else if (entry.target === hero) {
               heroVisible = entry.isIntersecting;
+              hero.classList.toggle('is-in-view', entry.isIntersecting);
+            } else if (
+              ['text', 'heading', 'statement', 'card'].includes(entry.target.getAttribute('data-reveal') ?? '')
+            ) {
+              entry.target.classList.toggle('is-visible', entry.isIntersecting);
             } else if (entry.isIntersecting) {
               entry.target.classList.add('is-visible');
               observer?.unobserve(entry.target);
@@ -51,6 +56,7 @@ export function ExperienceClient() {
       observer?.disconnect();
       menu?.removeEventListener('click', closeMenu);
       document.documentElement.classList.remove('reveal-ready');
+      hero?.classList.remove('is-in-view');
       if (shortcut) shortcut.hidden = true;
     };
   }, []);

@@ -12,6 +12,40 @@ afterEach(() => {
 });
 
 describe('ExperienceClient', () => {
+  it('replays text and headings when they leave and re-enter the viewport', () => {
+    let callback: IntersectionObserverCallback = () => undefined;
+    const unobserve = vi.fn();
+    vi.stubGlobal(
+      'IntersectionObserver',
+      class {
+        constructor(next: IntersectionObserverCallback) {
+          callback = next;
+        }
+        observe = vi.fn();
+        unobserve = unobserve;
+        disconnect = vi.fn();
+      },
+    );
+    document.body.innerHTML =
+      '<p data-reveal="text">文章</p><h2 data-reveal="heading">見出し</h2><p data-reveal="statement">想い</p><article data-reveal="card">流れ</article>';
+    const targets = Array.from(document.querySelectorAll('[data-reveal]'));
+    render(<ExperienceClient />);
+    const emit = (isIntersecting: boolean) =>
+      act(() =>
+        callback(
+          targets.map((target) => ({ target, isIntersecting }) as unknown as IntersectionObserverEntry),
+          {} as IntersectionObserver,
+        ),
+      );
+    emit(true);
+    expect(targets.every((target) => target.classList.contains('is-visible'))).toBe(true);
+    emit(false);
+    expect(targets.every((target) => !target.classList.contains('is-visible'))).toBe(true);
+    emit(true);
+    expect(targets.every((target) => target.classList.contains('is-visible'))).toBe(true);
+    expect(unobserve).not.toHaveBeenCalled();
+  });
+
   it('shows the mobile shortcut after the hero leaves and hides it when the hero returns', () => {
     let callback: IntersectionObserverCallback = () => undefined;
     vi.stubGlobal(
