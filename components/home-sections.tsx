@@ -65,7 +65,6 @@ export function HomeHero() {
           height="2245"
           fetchPriority="high"
         />
-        <img className="hero__reflection" src="/images/inner-insight-mark.png" alt="" aria-hidden="true" width="1587" height="2245" />
         <figcaption>
           <span>INNER INSIGHT</span>
           <span>内側にある、あなたへ。</span>
