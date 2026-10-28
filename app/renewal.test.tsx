@@ -32,11 +32,18 @@ describe('verbatim introduction and application journey', () => {
     expect(doc.querySelector('[data-original-copy] strong')?.textContent).toBe('誰もが自分の味方でいられる社会へ。');
   });
 
-  it('shows the complete original I image as the first-screen symbol', () => {
+  it('shows the original I image with the existing hero video configured to loop silently', () => {
     const doc = documentForPage();
     expect(doc.querySelector('.hero img')?.getAttribute('src')).toBe('/images/inner-insight-mark.png');
     expect(doc.querySelector('.hero img')?.getAttribute('alt')).toContain('I');
-    expect(doc.querySelector('.hero video')).toBeNull();
+    const video = doc.querySelector<HTMLVideoElement>('.hero video');
+    expect(video).not.toBeNull();
+    expect(video?.getAttribute('src')).toBe('/movie/Hero Movie.mp4');
+    expect(video?.getAttribute('poster')).toBe('/images/inner-insight-mark.png');
+    expect(video?.hasAttribute('loop')).toBe(true);
+    expect(video?.hasAttribute('muted')).toBe(true);
+    expect(video?.hasAttribute('playsinline')).toBe(true);
+    expect(video?.getAttribute('aria-hidden')).toBe('true');
     const checksum = createHash('sha256')
       .update(readFileSync(resolve('public/images/inner-insight-mark.png')))
       .digest('hex');

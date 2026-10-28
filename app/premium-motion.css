@@ -162,3 +162,52 @@
     width: 20px;
   }
 }
+/* The still image remains underneath as the accessible and low-motion fallback. */
+.hero-film {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1587 / 2245;
+}
+
+.hero-film img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hero-film__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+.hero-film__video.is-ready { opacity: 1; }
+
+.hero-film__control {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 1;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid rgba(75, 49, 69, 0.3);
+  border-radius: 24px;
+  background: rgba(255, 251, 248, 0.86);
+  color: #493345;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+}
+
+.hero-film__control span { margin-right: 7px; }
+.hero-film__control:focus-visible { outline: 2px solid #493345; outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-film__video, .hero-film__control { display: none; }
+}
+
