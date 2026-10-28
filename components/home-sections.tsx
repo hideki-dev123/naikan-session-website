@@ -1,5 +1,6 @@
 import { ArrowDown, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { ApplicationEmbed } from '@/components/application-embed';
+import { HeroFilm } from '@/components/hero-film';
 import { sessionSteps, siteLinks } from '@/lib/content';
 import { introduction } from '@/lib/introduction';
 import { splitFlowPhrases, splitIntoPhrases } from '@/lib/phrase-breaks';
@@ -50,13 +51,7 @@ export function HomeHero() {
         </div>
       </div>
       <figure className="hero__visual">
-        <img
-          src="/images/inner-insight-mark.png"
-          alt="Inner Insightの象徴。和紙の上に、葡萄色から夜紺へと移ろうIの文字。"
-          width="1587"
-          height="2245"
-          fetchPriority="high"
-        />
+        <HeroFilm />
         <figcaption>
           <span>INNER INSIGHT</span>
           <span>内側にある、あなたへ。</span>
