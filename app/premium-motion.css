@@ -236,3 +236,65 @@
   .intro-film + .site-header { margin-top: 0; }
 }
 
+/* A continuous watercolor scene around the original I artwork. */
+.hero {
+  min-height: min(760px, 88vh);
+  padding-top: 48px;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0 auto -72px 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, transparent 76%, rgba(250,249,246,.94) 100%), url('/images/sakura-water-hero.webp') center / cover no-repeat;
+  pointer-events: none;
+}
+.hero__content { max-width: 600px; }
+.hero__visual {
+  position: relative;
+  width: min(100%, 560px);
+  margin: 0;
+  overflow: hidden;
+}
+.hero__visual .hero__clip { position: absolute; width: 0; height: 0; }
+.hero__visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 0;
+  box-shadow: none;
+  clip-path: url(#hero-mark-clip);
+}
+.hero__visual .hero__reflection {
+  position: absolute;
+  left: 0;
+  top: 51%;
+  transform: scaleY(-1);
+  opacity: .2;
+  mask-image: linear-gradient(to top, transparent 12%, black 55%);
+  pointer-events: none;
+}
+.hero__visual figcaption { display: none; }
+@media (max-width: 700px) {
+  .hero {
+    min-height: 810px;
+    padding-top: 45px;
+    align-content: start;
+  }
+  .hero::before {
+    background: linear-gradient(to bottom, rgba(255,251,248,.38) 0%, rgba(255,251,248,.12) 55%, rgba(250,249,246,.94) 100%), url('/images/sakura-water-hero.webp') 72% center / cover no-repeat;
+  }
+  .hero__content { max-width: 100%; }
+  .hero__visual {
+    position: absolute;
+    top: auto;
+    right: -5%;
+    bottom: 20px;
+    width: min(72%, 350px);
+    opacity: .95;
+  }
+  .hero__bottom { z-index: 2; }
+}
+

@@ -23,7 +23,8 @@ export function HeroFilm() {
       if (motion.matches) return;
       const distance = Math.max(1, section.offsetHeight - stage.offsetHeight);
       const progress = Math.min(1, Math.max(0, -section.getBoundingClientRect().top / distance));
-      stage.style.opacity = String(Math.min(1, (1 - progress) / 0.16));
+      stage.style.opacity = String(Math.max(0, Math.min(1, (0.96 - progress) / 0.12)));
+      stage.style.pointerEvents = progress >= 0.96 ? 'none' : 'auto';
       if (Number.isFinite(video.duration) && video.duration > 0 && !video.seeking) {
         const target = Math.min(video.duration - 0.05, (progress / 0.84) * video.duration);
         if (Math.abs(video.currentTime - target) > 0.025) video.currentTime = target;
