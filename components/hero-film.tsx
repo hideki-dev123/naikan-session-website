@@ -21,7 +21,7 @@ export function HeroFilm() {
     const update = () => {
       frame = 0;
       if (motion.matches) return;
-      const distance = Math.max(1, section.offsetHeight - window.innerHeight);
+      const distance = Math.max(1, section.offsetHeight - stage.offsetHeight);
       const progress = Math.min(1, Math.max(0, -section.getBoundingClientRect().top / distance));
       stage.style.opacity = String(Math.min(1, (1 - progress) / 0.16));
       if (Number.isFinite(video.duration) && video.duration > 0 && !video.seeking) {
@@ -76,7 +76,7 @@ export function HeroFilm() {
         <video
           ref={videoRef}
           src="/movie/hero-scroll.mp4"
-          poster="/images/inner-insight-mark.png"
+          poster="/images/hero-opening-poster.webp"
           muted
           playsInline
           preload="none"
