@@ -11,13 +11,7 @@ describe('Inner Insight content', () => {
   });
 
   it('contains a complete navigation and narrative', () => {
-    expect(navigation.map((item) => item.href)).toEqual([
-      '#about',
-      '#session',
-      '#flow',
-      '#profile',
-      '#application',
-    ]);
+    expect(navigation.map((item) => item.href)).toEqual(['#profile', '#session', '#philosophy', '#flow']);
     expect(philosophies).toHaveLength(3);
     expect(sessionSteps).toHaveLength(3);
     expect(profile.name).toBe('平田 光');

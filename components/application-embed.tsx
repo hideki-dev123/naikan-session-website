@@ -6,7 +6,7 @@ export function ApplicationEmbed({ formUrl }: { formUrl: string }) {
   return (
     <div className="application-embed" data-reveal>
       <div className="application-embed__note">
-        <span>APPLICATION FORM</span>
+        <span className="eyebrow">BEFORE YOU BEGIN</span>
         <p>フォームの入力にはGoogleアカウントへのログインが必要です。</p>
         <p>表示されない場合は、別画面から同じフォームを開けます。</p>
         <a className="button button--primary" href={formUrl} target="_blank" rel="noreferrer">

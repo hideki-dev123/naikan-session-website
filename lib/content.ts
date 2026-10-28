@@ -6,11 +6,10 @@ export const siteLinks = {
 } as const;
 
 export const navigation = [
-  { label: '内観とは', href: '#about' },
+  { label: '私について', href: '#profile' },
   { label: 'セッション', href: '#session' },
-  { label: '流れ', href: '#flow' },
-  { label: '平田光について', href: '#profile' },
-  { label: 'お申し込み', href: '#application' },
+  { label: '大切にしていること', href: '#philosophy' },
+  { label: 'お申し込みの流れ', href: '#flow' },
 ] as const;
 
 export const philosophies = [
@@ -45,7 +44,7 @@ export const sessionSteps = [
   {
     number: '03',
     title: '対話から始める',
-    body: '最初は約2時間。雑談も交えながら、今の心の動きを一緒に見ていきます。',
+    body: 'Google Meetで、今の心の動きを一緒に見つめます。',
   },
 ] as const;
 
