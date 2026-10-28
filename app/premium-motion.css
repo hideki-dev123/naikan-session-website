@@ -267,15 +267,6 @@
   box-shadow: none;
   clip-path: url(#hero-mark-clip);
 }
-.hero__visual .hero__reflection {
-  position: absolute;
-  left: 0;
-  top: 51%;
-  transform: scaleY(-1);
-  opacity: .2;
-  mask-image: linear-gradient(to top, transparent 12%, black 55%);
-  pointer-events: none;
-}
 .hero__visual figcaption { display: none; }
 @media (max-width: 700px) {
   .hero {
