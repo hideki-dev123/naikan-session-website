@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
 import { ExperienceClient } from '@/components/experience-client';
+import { HeroFilm } from '@/components/hero-film';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 
@@ -44,10 +45,11 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   return (
     <html lang="ja">
       <body className="site-body">
-        <a className="skip-link" href="#main-content">
+        <a className="skip-link" href="#top">
           本文へ移動
         </a>
         <ExperienceClient />
+        <HeroFilm />
         <SiteHeader />
         {children}
         <SiteFooter />

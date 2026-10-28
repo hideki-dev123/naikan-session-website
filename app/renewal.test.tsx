@@ -7,6 +7,7 @@ import { describe, expect, it } from 'vitest';
 import Home from './page';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
+import { HeroFilm } from '@/components/hero-film';
 
 const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdm8nubPbm62zAnRIucGQa4mc22KrQW790tQTbZEC3TlgMtZw/viewform';
 const documentForPage = () => {
@@ -14,6 +15,7 @@ const documentForPage = () => {
   doc.body.innerHTML = renderToStaticMarkup(
     <>
       <SiteHeader />
+      <HeroFilm />
       <Home />
       <SiteFooter />
     </>,
@@ -32,15 +34,14 @@ describe('verbatim introduction and application journey', () => {
     expect(doc.querySelector('[data-original-copy] strong')?.textContent).toBe('誰もが自分の味方でいられる社会へ。');
   });
 
-  it('shows the original I image with the existing hero video configured to loop silently', () => {
+  it('places the existing film before the hero without looping or duplicating it', () => {
     const doc = documentForPage();
-    expect(doc.querySelector('.hero img')?.getAttribute('src')).toBe('/images/inner-insight-mark.png');
-    expect(doc.querySelector('.hero img')?.getAttribute('alt')).toContain('I');
-    const video = doc.querySelector<HTMLVideoElement>('.hero video');
+    expect(doc.querySelector('.hero img, .hero video')).toBeNull();
+    const video = doc.querySelector<HTMLVideoElement>('.intro-film video');
     expect(video).not.toBeNull();
     expect(video?.getAttribute('src')).toBe('/movie/Hero Movie.mp4');
     expect(video?.getAttribute('poster')).toBe('/images/inner-insight-mark.png');
-    expect(video?.hasAttribute('loop')).toBe(true);
+    expect(video?.hasAttribute('loop')).toBe(false);
     expect(video?.hasAttribute('muted')).toBe(true);
     expect(video?.hasAttribute('playsinline')).toBe(true);
     expect(video?.getAttribute('aria-hidden')).toBe('true');
