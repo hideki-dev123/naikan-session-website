@@ -180,7 +180,7 @@
   position: absolute;
   inset: -30px;
   content: '';
-  background: linear-gradient(rgba(251,248,245,.48), rgba(251,248,245,.48)), url('/images/inner-insight-mark.png') center / cover;
+  background: linear-gradient(rgba(251,248,245,.48), rgba(251,248,245,.48)), url('/images/hero-opening-poster.webp') center / cover;
   filter: blur(24px);
 }
 .intro-film video {
@@ -189,6 +189,16 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transform: scale(1.1);
+}
+@media (max-aspect-ratio: 4/5) {
+  .intro-film video { object-fit: cover; transform: none; }
+}
+@supports (height: 100dvh) {
+  .intro-film { height: 220dvh; }
+  .intro-film__stage { height: 100dvh; }
+  .intro-film + .site-header { margin-top: -100dvh; }
+  .intro-film[hidden] + .site-header { margin-top: 0; }
 }
 .intro-film__skip {
   position: absolute;

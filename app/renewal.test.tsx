@@ -41,7 +41,7 @@ describe('verbatim introduction and application journey', () => {
     const video = doc.querySelector<HTMLVideoElement>('.intro-film video');
     expect(video).not.toBeNull();
     expect(video?.getAttribute('src')).toBe('/movie/hero-scroll.mp4');
-    expect(video?.getAttribute('poster')).toBe('/images/inner-insight-mark.png');
+    expect(video?.getAttribute('poster')).toBe('/images/hero-opening-poster.webp');
     expect(video?.hasAttribute('loop')).toBe(false);
     expect(video?.hasAttribute('muted')).toBe(true);
     expect(video?.hasAttribute('playsinline')).toBe(true);
