@@ -14,6 +14,9 @@ export function HeroFilm() {
     const stage = stageRef.current;
     if (!section || !video || !stage) return;
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const controller = new AbortController();
+    let objectUrl: string | undefined;
+    let loading = false;
     let frame = 0;
     const update = () => {
       frame = 0;
@@ -28,16 +31,38 @@ export function HeroFilm() {
     const schedule = () => {
       if (!frame) frame = window.requestAnimationFrame(update);
     };
+    // Some hosts do not serve byte ranges for MP4s. A local blob URL makes the
+    // entire downloaded film seekable, including on those hosts.
+    const loadFilm = () => {
+      if (motion.matches || loading) return;
+      loading = true;
+      void fetch('/movie/Hero%20Movie.mp4', { signal: controller.signal })
+        .then((response) => {
+          if (!response.ok) throw new Error('Film could not be loaded');
+          return response.blob();
+        })
+        .then((blob) => {
+          if (controller.signal.aborted) return;
+          objectUrl = URL.createObjectURL(blob);
+          video.src = objectUrl;
+          video.load();
+        })
+        .catch(() => { if (!controller.signal.aborted) setFailed(true); });
+    };
+    const motionChanged = () => { loadFilm(); schedule(); };
     window.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', schedule);
     video.addEventListener('loadedmetadata', schedule);
-    motion.addEventListener('change', schedule);
+    motion.addEventListener('change', motionChanged);
+    loadFilm();
     schedule();
     return () => {
       window.removeEventListener('scroll', schedule);
       window.removeEventListener('resize', schedule);
       video.removeEventListener('loadedmetadata', schedule);
-      motion.removeEventListener('change', schedule);
+      motion.removeEventListener('change', motionChanged);
+      controller.abort();
+      if (objectUrl) URL.revokeObjectURL(objectUrl);
       if (frame) window.cancelAnimationFrame(frame);
     };
   }, []);
@@ -51,7 +76,7 @@ export function HeroFilm() {
           poster="/images/inner-insight-mark.png"
           muted
           playsInline
-          preload="auto"
+          preload="none"
           aria-hidden="true"
           tabIndex={-1}
           onError={() => setFailed(true)}
@@ -62,3 +87,4 @@ export function HeroFilm() {
     </section>
   );
 }
+
