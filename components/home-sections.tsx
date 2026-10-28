@@ -50,13 +50,22 @@ export function HomeHero() {
         </div>
       </div>
       <figure className="hero__visual">
+        <svg className="hero__clip" aria-hidden="true" focusable="false">
+          <defs>
+            <clipPath id="hero-mark-clip" clipPathUnits="objectBoundingBox">
+              <path d="M .374 .245 H .626 C .58 .247 .563 .265 .563 .31 L .563 .69 C .563 .735 .58 .753 .626 .755 H .374 C .42 .753 .436 .735 .436 .69 L .436 .31 C .436 .265 .42 .247 .374 .245 Z" />
+            </clipPath>
+          </defs>
+        </svg>
         <img
+          className="hero__mark"
           src="/images/inner-insight-mark.png"
           alt="Inner Insightの象徴。和紙の上に、葡萄色から夜紺へと移ろうIの文字。"
           width="1587"
           height="2245"
           fetchPriority="high"
         />
+        <img className="hero__reflection" src="/images/inner-insight-mark.png" alt="" aria-hidden="true" width="1587" height="2245" />
         <figcaption>
           <span>INNER INSIGHT</span>
           <span>内側にある、あなたへ。</span>
