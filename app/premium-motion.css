@@ -46,18 +46,62 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .reveal-ready [data-reveal='heading'],
-  .reveal-ready [data-reveal='statement'] {
-    opacity: 0.72;
-    transform: translateY(18px);
+  .reveal-ready .hero__content {
+    animation: none;
+    opacity: 0;
+    transform: translateY(24px);
     transition:
-      opacity 0.85s ease,
-      transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity 0.8s ease,
+      transform 1s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .reveal-ready [data-reveal='heading'].is-visible,
-  .reveal-ready [data-reveal='statement'].is-visible {
+  .reveal-ready .hero.is-in-view .hero__content,
+  .reveal-ready .hero__content:focus-within {
     opacity: 1;
     transform: none;
+  }
+  .reveal-ready [data-reveal='heading'],
+  .reveal-ready [data-reveal='statement'] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.75s ease,
+      transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal-ready [data-reveal='heading'].is-visible,
+  .reveal-ready [data-reveal='statement'].is-visible,
+  .reveal-ready [data-reveal='heading']:focus-within {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-ready [data-reveal='text'] {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-ready [data-reveal='text'] .phrase {
+    opacity: 0;
+    filter: blur(3px);
+    transform: translateY(20px);
+    transition:
+      opacity 0.7s ease,
+      filter 0.7s ease,
+      transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal-ready [data-reveal='text'].is-visible .phrase {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+  }
+  .reveal-ready [data-reveal='text'] .phrase:nth-child(2) {
+    transition-delay: 0.05s;
+  }
+  .reveal-ready [data-reveal='text'] .phrase:nth-child(3) {
+    transition-delay: 0.1s;
+  }
+  .reveal-ready [data-reveal='text'] .phrase:nth-child(4) {
+    transition-delay: 0.15s;
+  }
+  .reveal-ready [data-reveal='text'] .phrase:nth-child(n + 5) {
+    transition-delay: 0.2s;
   }
   .reveal-ready [data-reveal='heading'] .chapter-label::after {
     transform: scaleX(0.25);
@@ -67,8 +111,8 @@
     transform: scaleX(1);
   }
   .reveal-ready .flow__list li {
-    opacity: 0.65;
-    transform: translateY(18px);
+    opacity: 0;
+    transform: translateY(28px);
     transition:
       opacity 0.75s ease,
       transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);

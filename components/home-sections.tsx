@@ -196,7 +196,7 @@ export function HomeFlow() {
         </div>
         <ol className="flow__list">
           {sessionSteps.map((step, index) => (
-            <li key={step.number} data-reveal>
+            <li key={step.number} data-reveal="card">
               <span className="flow__number">{step.number}</span>
               <h3>{step.title}</h3>
               <p>
