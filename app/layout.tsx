@@ -8,6 +8,7 @@ import { SiteHeader } from '@/components/site-header';
 import './globals.css';
 import './refined.css';
 import './watercolor.css';
+import './premium-motion.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://inner-insight-hirata-hikaru.emiruka.chatgpt.site'),

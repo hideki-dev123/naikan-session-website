@@ -77,7 +77,7 @@ export function HomeStory() {
   return (
     <section className="story section" id="profile" aria-labelledby="profile-title">
       <div className="section-frame chapter-grid">
-        <div className="chapter-aside">
+        <div className="chapter-aside" data-reveal="heading">
           <ChapterLabel number="01">MY STORY</ChapterLabel>
           <h2 id="profile-title" data-original-copy>
             はじめまして。
@@ -112,7 +112,7 @@ export function HomeSession() {
   return (
     <section className="session section" id="session" aria-labelledby="session-title">
       <div className="section-frame chapter-grid">
-        <div className="chapter-aside" data-reveal>
+        <div className="chapter-aside" data-reveal="heading">
           <ChapterLabel number="02">THE SESSION</ChapterLabel>
           <h2 id="session-title">
             内観セッション
@@ -143,7 +143,7 @@ export function HomeBelief() {
     <section className="belief section" id="philosophy" aria-labelledby="belief-title">
       <div className="section-frame">
         <div className="belief__intro">
-          <div data-reveal>
+          <div data-reveal="heading">
             <ChapterLabel number="03">MY BELIEF</ChapterLabel>
             <h2 id="belief-title">大切にしていること。</h2>
           </div>
@@ -151,7 +151,7 @@ export function HomeBelief() {
             <OriginalParagraphs start={9} end={10} />
           </div>
         </div>
-        <p className="belief__statement" data-original-copy>
+        <p className="belief__statement" data-original-copy data-reveal="statement">
           <strong>
             <span>誰もが自分の味方で</span>
             <span>いられる社会へ。</span>
@@ -187,7 +187,7 @@ export function HomeFlow() {
   return (
     <section className="flow section" id="flow" aria-labelledby="flow-title">
       <div className="section-frame">
-        <div className="flow__heading">
+        <div className="flow__heading" data-reveal="heading">
           <div>
             <ChapterLabel number="04">FIRST STEP</ChapterLabel>
             <h2 id="flow-title">お会いするまで。</h2>
@@ -218,7 +218,7 @@ export function HomeApplication() {
   return (
     <section className="application section" id="application" aria-labelledby="application-title">
       <div className="section-frame">
-        <div className="application__heading">
+        <div className="application__heading" data-reveal="heading">
           <div>
             <ChapterLabel number="05">APPLICATION</ChapterLabel>
             <h2 id="application-title">
